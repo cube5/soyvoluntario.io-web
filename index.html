@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>soyvoluntar.io</title>
-  </head>
-  <body>
-    Ola ke ase /(^o^)/
-  </body>
+<html ng-app="app">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>soyvoluntar.io</title>
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,900" rel="stylesheet" type="text/css" />
+	<link href="node_modules/angular-material/angular-material.min.css" rel="stylesheet" type="text/css" />
+	<link href="node_modules/animate.css/animate.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">[ng\:cloak], [ng-cloak], .ng-cloak {display: none !important;}</style>
+
+</head>
+	<body ng-controller="MainController as main" layout="column" flex>
+		<app-header></app-header>
+
+		<app-sidenav></app-sidenav>
+
+		<div layout="column" layout-align="space-between">
+			<md-content ng-view md-scroll-y flex layout-padding></md-content>
+			<app-footer></app-footer>
+		</div>
+
+    <script src="bundle.js" charset="utf-8"></script>
+	</body>
 </html>

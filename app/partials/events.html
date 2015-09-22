@@ -1,0 +1,46 @@
+<md-tabs md-selected="selectedIndex" flex="">
+
+	<md-tab id="tab1" aria-controlls="tab1-content">
+		<md-tab-label> Eventos disponibles </md-tab-label>
+		<div layout="row" layout-align="space-around">
+			<div>
+				<vol-events events="events"></vol-events>
+			</div>
+			<div layout-margin md-theme="blueGreyTheme">
+				<md-sidenav class="md-sidenav-left md-whiteframe-z2"
+					md-is-locked-open="$mdMedia('gt-md')"
+					md-component-id="eventsGoingNav">
+					<md-toolbar class="md-pimary">
+						<h1 class="md-toolbar-tools"> Eventos a los que ir&aacute;s </h1>
+					</md-toolbar>
+					<md-content layout-padding>
+						<vol-events-mini events="events"></vol-events-mini>
+					</md-content>
+				</md-sidenav>
+			</div>
+		</div>
+	</md-tab>
+	<md-tab>
+		<md-tab-label> Eventos pasados </md-tab-label>
+		Ola ke ase
+	</md-tab>
+
+	<md-tab ng-if="authenticated">
+		<md-tab-label> Eventos a los que has ido </md-tab-label>
+		Ola ke ase
+	</md-tab>
+
+	<md-tab ng-if="authenticated">
+	<md-tab-label> Ongs que apoyas </md-tab-label>
+		Ola ke ase
+	</md-tab>
+
+</md-tabs>
+
+<div ng-if="!isLoadingEvents && selectedIndex === 0" layout="row" layout-align="space-around">
+	<a ng-click="loadMore()" href="javascript:void(0)">Cargar m&aacute;s...</a>
+</div>
+
+<div ng-if="isLoadingEvents" layout="row" layout-align="space-around">
+	<md-progress-circular md-mode="indeterminate" class="md-accent"></md-progress-circular>
+</div>

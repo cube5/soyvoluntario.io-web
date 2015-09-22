@@ -1,0 +1,29 @@
+<md-card layout="column" data-sr="enter top, move 24px" 
+	ng-repeat="eventResource in events track by $index">
+	<md-card-content>
+		<h3>{{eventResource.event.name}}</h3>
+		<div>{{eventResource.event.description}}</div>
+		<br/>
+		<div>
+			<br/>
+			{{eventResource.event.address}}
+			<br/>
+			{{eventResource.event.date}}
+			<br/>
+			{{eventResource.event.time}}
+			<br/>
+		</div>
+		<div layout="row" layout-align="space-around end">
+			<md-button ng-href="events/{{eventResource.event.id}}"
+				class="md-raised md-accent">
+				Ver detalles
+			</md-button>
+			<md-button class="md-raised md-primary" ng-show="!ir" ng-click="ir = !ir" aria-label="ir a evento">
+				Asistir
+			</md-button>
+			<md-button class="md-raised md-warn" ng-show="ir" ng-click="ir = !ir" aria-label="ir a evento">
+				Cancelar
+			</md-button>
+		</div>
+	</md-card-content>
+</md-card>

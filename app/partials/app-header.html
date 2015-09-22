@@ -1,0 +1,48 @@
+<md-toolbar md-scroll-shrink="">
+	<div layout="row" layout-align="end" class="md-toolbar-tools">
+		<md-button ng-click="main.showSidenav()" aria-label="mostrar menu">
+			<i class="fa fa-bars fa-lg"></i>
+			<md-tooltip>Menu</md-tooltip>
+		</md-button> &nbsp;
+		<a href="/" ng-href="/" >
+			<i class="fa fa-child fa-border fa-lg"></i>&nbsp; Soyvoluntar.io
+		</a>
+		<span flex></span>
+		<md-button ng-if="!login.user" ng-href="#/login">Iniciar sesi&oacute;n</md-button>
+		<label ng-if="login.user" class="md-caption">{{user.username}}</label>
+		<md-menu ng-if="login.user">
+			<md-button ng-click="openMenu($mdOpenMenu, $event)" aria-label="perfil">
+				<img ng-src ="{{login.randomPhotoThumb}}" class="face-toolbar"/>
+			</md-button>
+			<md-menu-content>
+				<md-menu-item>
+					<md-button ng-href="#/me" md-menu-align-target>
+						<md-icon md-menu-origin class="fa fa-user"></md-icon>
+						Perfil
+					</md-button>
+				</md-menu-item>
+				<md-menu-item>
+					<md-button ng-click="login.logout()">
+						<md-icon md-menu-origin class="fa fa-sign-out"></md-icon>
+						Cerrar sesi&oacute;n
+					</md-button>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
+		<md-menu ng-if="login.user">
+			<md-button class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)" aria-label="notificationes">
+				<i class="fa fa-bell fa-lg"></i>
+				<md-tooltip>Notificaciones</md-tooltip>
+			</md-button>
+			<md-menu-content>
+				<md-menu-item>
+					<span>Tienes {{notifications || 0}} notificationes</span>
+				</md-menu-item>
+			</md-menu-content>
+		</md-menu>
+
+		<md-button class="md-icon-button" aria-label="acciones">
+			<i class="fa fa-ellipsis-v fa-lg"></i>
+		</md-button>
+	</div>
+</md-toolbar>

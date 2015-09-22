@@ -1,0 +1,19 @@
+
+<div id="login" layout="column" layout-sm="column" layout-align="space-around center">
+	<h1>Iniciar sesi&oacute;n</h1>
+	<md-content>
+		<div layout="row" layout-sm="column">
+			<form role="form" name="loginForm" ng-submit="login.login()">
+				<md-input-container flex>
+					<label><strong>Usuario</strong></label>
+					<input name="username" ng-model="login.credentials.username" required />
+				</md-input-container>
+        <md-input-container flex>
+	        <label><strong>Contrase&ntilde;a</strong></label>
+	        <input name="password" ng-model="login.credentials.password" type="password" required />
+      	</md-input-container>
+        <md-button type="submit" class="md-raised md-primary">Iniciar sesi&oacute;n</md-button>
+			</form>
+    </div>
+	</md-content>
+</div>

@@ -1,0 +1,38 @@
+
+<div id="newOng" layout="column" layout-sm="column" layout-align="space-around center">
+	<h1>Registrarse como ONG</h1>
+	<md-content>
+		<div layout="row" layout-sm="column">
+			<form ng-submit="createOng(ong)">
+				<md-input-container flex="">
+					<label><strong>Nombre</strong></label>
+					<input name="name" ng-model="ong.name" required="" />
+      			</md-input-container>
+      			<md-input-container flex="">
+					<label><strong>Correo electr&oacute;nico</strong></label>
+					<input name="email" ng-model="ong.email" required="" />
+      			</md-input-container>
+      			<md-input-container flex="">
+					<label><strong>Direcci&oacute;n</strong></label>
+					<input name="address" ng-model="ong.address" required="" />
+      			</md-input-container>
+      			<md-input-container flex="">
+					<label><strong>Descripci&oacute;n</strong></label>
+					<textarea name="description" ng-model="ong.username"></textarea>
+      			</md-input-container>
+		        <md-input-container flex="">
+		        	<label><strong>Contrase&ntilde;a</strong></label>
+		        	<input name="password" ng-model="ong.password" type="password" required=""/>
+		        </md-input-container>
+		        <md-input-container flex="">
+		        	<label><strong>Confirmar contrase&ntilde;a</strong></label>
+		        	<input name="password2" ng-model="password2" type="password" required=""/>
+		        </md-input-container>
+		        <button id="submit" type="submit" class="md-raised md-primary" md-button="">Aceptar</button>
+		        
+<!-- 		        <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="true"></div> -->
+		        
+			</form>
+	    </div>
+	</md-content>
+</div>

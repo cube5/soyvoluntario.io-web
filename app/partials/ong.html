@@ -1,0 +1,141 @@
+<md-tabs md-selected="selectedIndex" flex="">
+		
+	<md-tab>
+		<md-tab-label>ONG</md-tab-label>
+		<section layout="row" layout-align="space-around">
+			<div layout="row" layout-align="space-around">
+				<md-content>
+					<md-card>
+						<img src="http://lorempixel.com/1013/300" height="300" />
+						
+						<div layout-padding="">
+							<h1>{{ongResource.ong.name}}</h1>
+							
+							<p>{{ongResource.ong.description}}</p>
+							
+							<p>
+								Ojos que Sienten A.C es una Asociación que tiene por objetivo cambiar las percepciones sobre las personas con 
+								discapacidad visual, enfocándonos en sus habilidades, empoderándolas e incluyéndolas en el ámbito social, laboral 
+								y educativo, apoyándolas así a superar sus barreras.
+							</p>
+							<p>
+								Nace en 2006 de la iniciativa de la fotógrafa Gina Badenoch, quién se da cuenta, tras realizar una investigación en
+								Londres sobre fotógrafos con discapacidad visual, que la fotografía es una herramienta con gran potencial para 
+								las PCDV, ya que a través de ésta son vistas y escuchadas.
+							</p>
+							<p>
+								De esta forma, la fotografía se ha convertido en una de las herramientas más importantes de Ojos Que Sienten A.C.
+								para romper paradigmas y traspasar los límites de la discapacidad visual de una forma creativa, vivencial  e
+								innovadora.
+							</p>
+							<p>
+								Adicional al taller de fotografía, actualmente ofrecemos un ciclo de capacitación para personas con discapacidad
+								visual, enfocado en desarrollar la inteligencia emocional y las habilidades laborales que les permita desarrollar
+								su potencial como miembros productivos de la sociedad.
+							</p>
+							<p>
+								A lo largo de nuestra historia, hemos impactado de manera directa a más de 500,000 personas personas con y sin
+								discapacidad a través de distintas actividades de alto impacto social que han tendido puentes de unión entre 
+								distintos grupos de personas.
+							</p>
+						</div>
+						<md-button class="md-raised md-accent" ng-click="showConfirm($event)"
+							id="btnApply">
+							Enviar solicitud
+						</md-button>
+					</md-card>
+				</md-content>
+			</div>
+			<div layout-margin="" md-theme="blueGreyTheme">
+				<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-is-locked-open="$media('gt-md')"
+							md-component-id="eventsGoingNav">
+					<md-toolbar class="md-accent">
+						<h1 class="md-toolbar-tools"> Informaci&oacute;n adicional </h1>
+					</md-toolbar>
+					
+					<md-content layout-padding="">
+						<div>
+							Ubicaci&oacute;n: {{ongResource.ong.address}}
+							<br/>
+							Requiere cv: {{ongResource.ong.cv === 1? 'si': 'no'}}
+							<br/>
+							Voluntarios inscritos: {{ongVolunteers.length}}
+						</div>
+						<h1>&Uacute;ltimos eventos</h1>
+						<md-card>
+							<div ng-if="ongEvents.length === 0" layout-padding="">
+								No hay eventos disponibles
+							</div>
+						</md-card>
+						<vol-events-mini events="ongEvents"></vol-events-mini>
+					</md-content>
+					
+				</md-sidenav>
+			</div>
+		</section>
+	</md-tab>
+	
+	<md-tab>
+		<md-tab-label>Eventos realizados</md-tab-label>
+		<div layout="row" layout-align="space-around center">
+			<vol-events events="ongEvents"></vol-events>
+		</div>
+	</md-tab>
+	
+	<md-tab>
+		<md-tab-label> VOLUNTARIOS APOYANDO ESTA CAUSA </md-tab-label>
+		<h2 layout-padding=""> La diferencia la hacen ellos: </h2>
+		<md-content>
+			<md-card>
+				<md-list>
+		      		<md-item ng-repeat="volunteerResource in ongVolunteers track by $index">
+		        		<md-item-content>
+		          			<div class="md-tile-left">
+		              			<a ng-href="{{ (volunteerResource.links | filter:'self':true)[0].href }}">
+		              				<img ng-src="{{randomPhoto}}"
+		              					alt="{{volunteerResource.volunteer.name}}"
+		              					style="border-radius: 30px; border: 1px solid #ddd; 
+	             							width: 48px; margin: 16px" />
+		              			</a>
+		          			</div>
+		          			<div class="md-tile-content">
+		          				<div>
+		          					<a ng-href="{{ (volunteerResource.links | filter:'self':true)[0].href }}">
+				            			<h3>
+				            				{{volunteerResource.volunteer.name}}
+				            				{{volunteerResource.volunteer.lastName}}
+				            			</h3>
+				            		</a>
+			            			Lvl: {{volunteerResource.volunteer.lvl}}
+		          				</div>
+		            			<div>
+		            				<h4>Exp:</h4> 
+		            				<md-progress-linear 
+		            					md-mode="determinate" 
+		            					value="{{volunteerResource.volunteer.exp / 100}}">
+		            				</md-progress-linear>
+		            			</div>
+		          			</div>
+		        		</md-item-content>
+		        		<md-divider md-inset="" ng-if="!$last"></md-divider>
+		      		</md-item>
+		    	</md-list>
+			</md-card>
+		</md-content>
+	</md-tab>
+	
+	<md-tab>
+		<md-tab-label>ONG</md-tab-label>
+		<md-content>
+			 <md-input-container>
+			 	<label>Nombre del evento</label>
+			 	<input ng-model="model.event.name" type="text">
+			 </md-input-container>
+		    <md-input-container>
+		    	<label>Descripci&oacute;n</label>
+		    	<input ng-model="model.event.description" type="text">
+		    </md-input-container>
+		</md-content>
+	</md-tab>
+
+</md-tabs>
